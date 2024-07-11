@@ -2,20 +2,10 @@ using UnityEngine;
 
 public class Rotation : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private Transform _rotationCenter;
-    [SerializeField] private Vector3 _offset;
+    [SerializeField] private float _angleRotationY;
 
-    private void Start()
+    private void Update()
     {
-        _offset = transform.position - _rotationCenter.position;
-    }
-
-    void Update()
-    {
-        transform.position = _rotationCenter.position + _offset;
-        transform.RotateAround(_rotationCenter.position, Vector3.up, _speed * Time.deltaTime);
-        transform.Rotate(Vector3.up * _speed * Time.deltaTime);
-        _offset = transform.position - _rotationCenter.position;
+        transform.Rotate(Vector3.up * _angleRotationY * Time.deltaTime);
     }
 }
